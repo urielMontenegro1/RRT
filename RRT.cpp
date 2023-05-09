@@ -16,20 +16,13 @@
     }
 
 
-    node* RRT :: setDesireNodes(float posDesireX, float posDesireY){
-
-           return new node(posDesireX,posDesireY);
-
-    }
-
-    void RRT :: getNearestNode(node* inputRandomNode){
+    void RRT :: getNearestNode(){
             node *nearestNode = new node(0,0);
             node *nodes;
             node *inputRandomNode;
             node *newNode;
             float  minDist;
             float distanceNodes;
-            ,i_min=0;
             bool act = true;
             //minDist = 1000;
             nodes=new node(0,0);
@@ -51,7 +44,7 @@
                           
                           nearestNode = nodes; 
                           minDist = distanceNodes;                          
-                          vectorNumeros[nodoRRT.size()]=minDist;
+                          
                                
                         }
                         
@@ -94,8 +87,10 @@
     }
 
 
-    void findPath(){
+    void RRT :: findPath(){
+
         path.push_back(initiateNode());
+
         float minDistToDesire = getDistanceNodes(desireNode(),initiateNode());
        
         node* nodoResult;
@@ -123,23 +118,23 @@
     }
 
 
-    node *desireNode(){    
+    node* RRT :: desireNode(){    
       return new node(posDesireX,posDesireY);
     }
     
-    node *initiateNode(){    
+    node* RRT :: initiateNode(){    
       return new node(posInitiateX,posInitiateY);
     }
 
-    void setStatus(bool status){
+    void RRT :: setStatus(bool status){
           this->status= status;          
     }
 
-    void reverseStatus(bool status){
+    void RRT :: reverseStatus(bool status){
         this->status=!status;      
     }
     
-    bool getStatus(){
+    bool RRT :: getStatus(){
           return this->status;
     }
 

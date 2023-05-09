@@ -22,7 +22,8 @@ private:
     bool status;
 
 public:
-    std::vector<node*> nodes;
+    std::vector<node*> nodoRRT;
+
     std::vector<node*> path;
 
     //Sin Posiciones iniciales en los input  ---- Without Positions initiates
@@ -37,6 +38,9 @@ public:
         this -> limitSupX = limitSupX;
         this -> limitSupY = limitSupY;
         this -> iter = iter;
+
+        nodoRRT.push_back(new node(posInitiateX,posInitiateY));
+        
 
     }
 
@@ -90,9 +94,6 @@ public:
 
     node* randomPoints();
 
-
-    node* setDesireNodes(float posDesireX, float posDesireY);
-
     void getNearestNode();
 
     float nodeNearDesire(node* desireNode, node* nearestNode);
@@ -105,9 +106,9 @@ public:
     
     bool getStatus();
 
-    node *desireNode();
+    node* desireNode();
     
-    node *initiateNode();
+    node* initiateNode();
 
     float getDistanceNodes(node* node1, node* node2 );   
 };
